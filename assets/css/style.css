@@ -46,6 +46,10 @@ body {
   border-radius: 5px 0 0 5px;
 }
 
+#angel-image {
+  width: 50%;
+}
+
 #game-side {
   display: flex;
   flex-direction: column;
@@ -68,6 +72,19 @@ body {
 }
 
 #available-char {
+}
+
+.char-box {
+  display: flex;
+  flex-direction: row;
+}
+
+.char-card {
   text-align: center;
-  font-size: 320%;
+  background-color: rgb(219, 88, 65);
+  padding: 25px;
+  font-size: 30px;
+  width: 7.69%;
+  border: rgb(158, 80, 192) 1px solid;
+  margin: 2px;
 }

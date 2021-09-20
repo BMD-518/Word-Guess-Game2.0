@@ -1,0 +1,73 @@
+body {
+  background-color: rgb(145, 140, 170);
+}
+
+#game-title {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(79, 68, 124);
+  width: 90vw;
+  /* height: 15vh; */
+  margin: -5px auto 0 auto;
+
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 2px 2px 2px black;
+}
+
+#title-img {
+  padding-bottom: 5px;
+}
+
+#game-content {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(88, 78, 119);
+  width: 80vw;
+  height: 45vh;
+  padding: 20px;
+  margin: 2px auto 0 auto;
+  border-radius: 0 0 10px 10px;
+}
+
+#game-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#img-div {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(64, 58, 97);
+  width: 50%;
+  align-content: center;
+  padding: 5px;
+  border-radius: 5px 0 0 5px;
+}
+
+#game-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: chartreuse;
+  text-align: center;
+  width: 50%;
+  padding: 5px;
+  border-radius: 0 5px 5px 0;
+}
+
+#game-directions {
+  background-color: orangered;
+  padding: 20px;
+}
+
+#current-word {
+  background-color: orchid;
+  padding: 20px;
+}
+
+#available-char {
+  text-align: center;
+  font-size: 320%;
+}

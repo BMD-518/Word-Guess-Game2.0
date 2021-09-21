@@ -8,10 +8,9 @@ body {
   background-color: hsl(252, 29%, 38%);
   width: 90vw;
   margin: -5px auto 0 auto;
-
   text-align: center;
   border-radius: 0 0 10px 10px;
-  box-shadow: 2px 2px 2px black;
+  box-shadow: 1px 1px 10px black;
 }
 
 #title-img {
@@ -25,6 +24,7 @@ body {
   width: 80vw;
   padding: 20px;
   margin: 2px auto 0 auto;
+  box-shadow: 8px 8px 25px hsl(128, 80%, 65%);
   border-radius: 0 0 10px 10px;
 }
 
@@ -87,9 +87,7 @@ body {
   padding: 25px;
   font-size: 30px;
   color: hsl(284, 11%, 28%);
-  /* width: 100%; */
   border: hsl(128, 50%, 52%) 2px solid;
-  /* border: rgb(158, 80, 192) 3px solid; */
   border-radius: 8px;
   margin: 2px;
 }

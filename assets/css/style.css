@@ -68,6 +68,7 @@ body {
 #current-word {
   background-color: orchid;
   padding: 20px;
+  justify-content: center;
 }
 
 #available-char {

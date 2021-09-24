@@ -67,7 +67,10 @@ body {
 
 #current-word {
   background-color: orchid;
+  color: hsla(138, 63%, 72%, 0.822);
   padding: 20px;
+  font-size: 500%;
+  font-weight: 800;
   justify-content: center;
 }
 

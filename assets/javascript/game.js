@@ -1,43 +1,65 @@
-// words to play
-const angels = [
-  'adam',
-  'lilith',
-  'sachiel',
-  'shamshel',
-  'ramiel',
-  'gaghiel',
-  'israfel',
-  'sandalphon',
-  'matarael',
-  'sahaquiel',
-  'ireul',
-  'leliel',
-  'bardiel',
-  'zeruel',
-  'arael',
-  'armisael',
-  'tabris',
-  'lilin',
-];
-let gameIsStarted = false;
+'use strict';
 
-let directions = document.getElementById('game-directions');
-let word = document.getElementById('current-word');
-
-// directions.style.display = 'none';
-word.style.display = 'none';
-
+// >>>>> GAME OBJECT
 let game = {
-  // guesses made
+  // >>>>> words to play
+  angels: [
+    'adam',
+    'lilith',
+    'sachiel',
+    'shamshel',
+    'ramiel',
+    'gaghiel',
+    'israfel',
+    'sandalphon',
+    'matarael',
+    'sahaquiel',
+    'ireul',
+    'leliel',
+    'bardiel',
+    'zeruel',
+    'arael',
+    'armisael',
+    'tabris',
+    'lilin',
+  ],
+
+  // >>>>> CREATE ARRAY OF ALPHABET
+  alphabet: 'abcdefghijklmnopqrstuvwxyz'.split(''),
+  // console.log(alphabet[0]);
+
+  gameIstarted: false,
+
+  // >>>>> DOM DISPLAY VARIABLES
+  directions: document.getElementById('game-directions'),
+  word: document.getElementById('current-word'),
+
+  // >>>>> GUESSES MADE
   guesses: 0,
-  // guesses remaining
+
+  // >>>>> GUESSES REMAINING
   remainingGuesses: 10,
-  // letters guessed
-  remainingLetters: [],
-  currentAngel: '',
-  test: function (array) {
-    currentAngel = array[0];
-    console.log(currentAngel);
+  remainingLetters: this.alphabet,
+  // >>>>> GAME OBJECT METHODS
+  showWord: function () {
+    this.word.style.display = 'flex';
+    this.directions.style.display = 'none';
+  },
+  getAngel: function (array, current) {
+    current = array[0];
+    console.log(current);
+    this.word.textContent = current;
+    this.showWord();
   },
 };
-game.test(angels);
+// set word in play to array of characters
+
+// PSEUDOCODE GAME OBJECT METHODS:
+// begin game function
+// display currentAngel as underscore characters
+// capture user input (as lower case character, regardless of case)
+// show guessed letters as having been pressed
+// compare user guess to elements in currentAngel array
+
+game.getAngel(game.angels);
+// console.log(game.remainingLetters);

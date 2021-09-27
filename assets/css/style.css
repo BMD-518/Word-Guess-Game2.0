@@ -93,20 +93,28 @@ body {
   padding: 25px;
   font-size: 30px;
   color: hsl(284, 11%, 28%);
-  border: hsl(128, 50%, 52%) 2px solid;
+  border: hsl(128, 50%, 52%) 3px solid;
   border-radius: 8px;
   margin: 2px;
 }
 
 .char-card:hover {
   background-color: hsl(21, 91%, 45%);
-  border-top: hsl(284, 70%, 80%) 2px solid;
-  border-right: hsl(284, 70%, 80%) 2px solid;
-  border-bottom: hsl(128, 70%, 45%) 2px solid;
-  border-left: hsl(128, 70%, 45%) 2px solid;
+  border-top: hsl(284, 70%, 80%) 3px solid;
+  border-right: hsl(284, 70%, 80%) 3px solid;
+  border-bottom: hsl(128, 70%, 45%) 3px solid;
+  border-left: hsl(128, 70%, 45%) 3px solid;
 }
 
 /* CLASSES FOR USED LETTERS */
+.pressed {
+  background-color: hsl(21, 91%, 80%);
+  border-top: hsl(284, 70%, 40%) 3px solid;
+  border-right: hsl(284, 70%, 40%) 3px solid;
+  border-bottom: hsl(128, 70%, 25%) 3px solid;
+  border-left: hsl(128, 70%, 25%) 3px solid;
+}
+
 .correct {
   background: green;
 }

@@ -72,6 +72,8 @@ body {
   font-size: 500%;
   font-weight: 800;
   justify-content: center;
+  border-radius: 5px;
+  display: none;
 }
 
 #available-char {
@@ -102,4 +104,13 @@ body {
   border-right: hsl(284, 70%, 80%) 2px solid;
   border-bottom: hsl(128, 70%, 45%) 2px solid;
   border-left: hsl(128, 70%, 45%) 2px solid;
+}
+
+/* CLASSES FOR USED LETTERS */
+.correct {
+  background: green;
+}
+
+.incorrect {
+  background: red;
 }

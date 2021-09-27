@@ -64,10 +64,20 @@ document.onkeydown = function (e) {
   if (e.key.length === 1 && !/[^a-zA-Z]/.test(e.key)) {
     // alphabetic key validation using event.key
     // console.log('yup');
+    illuminate(e.key);
     game.userGuess = e.key.toUpperCase(); // assign game.userGuess to value of event.key
     document.getElementById('current-word').style.display = 'flex';
     document.getElementById('game-directions').style.display = 'none';
   } else {
     alert('Use keys a-z only!');
   }
+};
+
+// illuminate key pressed function
+let illuminate = function (char) {
+  document.getElementById(char).classList.add('pressed');
+  setTimeout(function () {
+    document.getElementById(char).classList.remove('pressed');
+  }, 250);
+  //
 };

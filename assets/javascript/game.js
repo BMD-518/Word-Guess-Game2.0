@@ -3,10 +3,12 @@
 // >>>>> DOM DISPLAY VARIABLES
 let directions = document.getElementById('game-directions');
 let word = document.getElementById('current-word');
+let tries = document.getElementById('attempts-made');
+let triesLeft = document.getElementById('remaining-attempts');
 
 // >>>>> GAME OBJECT
 let game = {
-  // array of characters
+  // ARRAY OF CHARACTERS
   evaCharacters: {
     shinji: { picture: './', song: '' },
     rei: { picture: './', song: '' },
@@ -15,13 +17,13 @@ let game = {
     ritsuko: { picture: './', song: '' },
   },
 
-  // initial variables
+  // INITIAL VARIABLES
   currentCharacter: null,
   nameArray: [],
   userGuess: null,
   matchingLetters: [],
   guessedLetters: [],
-  attemptsMade: 0,
+  totalAttempts: 0,
   remainingAttempts: 0,
 
   // >>>>> GAME METHODS
@@ -36,13 +38,58 @@ let game = {
 
     this.nameArray = this.currentCharacter.split(''); // convert characterNames to an array of letters
     console.log(this.nameArray);
-    this.updateWordText(this.nameArray);
+    this.updateWordElement(this.nameArray); // Display initial blank characters
+    this.updateAttempts(); // Display guess counts
   },
 
-  // UPDATE MATCHED LETTERS
+  // UPDATE DOM
+  updateDom: function (guess) {
+    // update attempt count
+    this.updateAttemptsData(guess);
 
-  // UPDATING DOM
-  updateWordText: function () {
+    // update matched letters
+
+    // update nameArray with updateWordElement (char or _.)
+    this.updateWordElement(guess);
+  },
+
+  // UPDATE ATTEMPTS/REMAINING ATTEMPTS
+  updateAttempts: function () {
+    this.remainingAttempts = this.nameArray.length + 5;
+    this.totalAttempts = this.totalAttempts;
+
+    // ***** maybe move below line into another function, ISSUE: posting number of attempts before game actually starts. another issue being how the beginning of the game is actually initiated!!!!!
+    triesLeft.textContent = 'Remaining Attempts: ' + this.remainingAttempts;
+    tries.textContent = 'Attempts Made: ' + this.totalAttempts;
+  },
+  // HANDLE USER INPUT (WRONG GUESSES)
+  updateAttemptsData: function (guess) {
+    if (
+      // check that guess is in neither guessedLetters or nameArray arrays
+      this.guessedLetters.indexOf(guess) === -1 &&
+      this.nameArray.indexOf(guess) === -1
+    ) {
+      this.guessedLetters.push(guess); //push guess into guessedLetters
+      this.remainingAttempts--; // decrease remaining guesses by one
+
+      // update dom data
+      document.getElementById(guess).classList.add('incorrect');
+      // document.getElementById('remaining').textContent =
+    } else {
+      for (let i = 0; i < this.nameArray.length; i++) {
+        const element = this.nameArray[i];
+        if (guess === element && this.matchingLetters.indexOf(guess) === -1) {
+          this.matchingLetters.push(guess);
+          document.getElementById(guess).classList.add('correct');
+        }
+      }
+    }
+  },
+
+  // HANDLE USER INPUT (RIGHT GUESSES)
+
+  // UPDATE WORD DISPLAY
+  updateWordElement: function () {
     let wordText = ''; // empty string value
     // LOOP THROUGH ARRAY FOR GUESSED LETTERS
     for (let i = 0; i < this.nameArray.length; i++) {
@@ -53,9 +100,11 @@ let game = {
         wordText += ' _ ';
       }
     }
-    document.getElementById('current-word').textContent = wordText;
+    document.getElementById('current-word').textContent =
+      wordText.toUpperCase();
   },
 };
+
 game.startGame();
 
 // EVENT LISTENER FUNCTION
@@ -65,15 +114,18 @@ document.onkeydown = function (e) {
     // alphabetic key validation using event.key
     // console.log('yup');
     illuminate(e.key);
-    game.userGuess = e.key.toUpperCase(); // assign game.userGuess to value of event.key
-    document.getElementById('current-word').style.display = 'flex';
-    document.getElementById('game-directions').style.display = 'none';
+    game.userGuess = e.key.toLowerCase(); // assign game.userGuess to value of event.key
+    game.updateDom(game.userGuess); // pass to function to update dom
+
+    // create function to handle all display: 'none' settings
+    word.style.display = 'flex'; // Show current word
+    directions.style.display = 'none'; // Hide directions
   } else {
     alert('Use keys a-z only!');
   }
 };
 
-// illuminate key pressed function
+// ILLUMINATE KEYS PRESSED FUNCTION
 let illuminate = function (char) {
   document.getElementById(char).classList.add('pressed');
   setTimeout(function () {
